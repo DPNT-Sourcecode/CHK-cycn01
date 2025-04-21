@@ -20,12 +20,14 @@ class CheckoutSolution:
         A_special = [3, 130]
         A_special_2 = [5, 200]
         B_special = [2, 45]
+        E_special = [2, -B_special[1]]
 
         #set up base prices
         A_price = 50
         B_price = 30
         C_price = 20
         D_price = 15
+        E_price = 40
 
         #calculate the price
         price = 0
@@ -34,10 +36,15 @@ class CheckoutSolution:
             match key:
                 case "A":
                     number = sku_dict.get(key)
+                    # mod the larger special to get remainder
                     number_of_non_extra_specials = number % A_special_2[0]
+                    # mod smaller special to get remainder of remainder
                     number_of_non_specials = number_of_non_extra_specials % A_special[0]
+                    # add items that don't get a special
                     price += number_of_non_specials * A_price
+                    # add items that only get the smaller special
                     price += ((number_of_non_extra_specials - number_of_non_specials)/A_special[0]) * A_special[1]
+                    # add items from the larger special
                     price += ((number - number_of_non_specials)/A_special_2[0]) * A_special_2[1]
                 case "B":
                     number = sku_dict.get(key)
@@ -48,8 +55,13 @@ class CheckoutSolution:
                     price += sku_dict.get(key) * C_price
                 case "D":
                     price += sku_dict.get(key) * D_price
+                case "E":
+                    number = sku_dict.get(key)
+                    number_of_non_specials = number % E_special[0]
+                    price += number_of_non_specials * E_price
                 case _:
                     return -1
                 
         return int(price)
+
 
