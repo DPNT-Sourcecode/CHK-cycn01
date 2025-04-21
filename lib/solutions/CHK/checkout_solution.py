@@ -83,5 +83,16 @@ class CheckoutSolution:
         # add items from the larger special
         out_price += ((number - number_of_non_extra_specials)/special2[0]) * special2[1]
         return out_price
+    
+    def get_free_by_other(self, price, special, other_special, number, other_number):
+        # Apply the E discount by taking away any Bs that are made free by the Es
+        if other_number is not None:
+            number = number - (other_number // other_special)
+        # Now we've gotten rid of the free Bs, we can continue as normal
+        number_of_non_specials = number % special[0]
+        out_price = number_of_non_specials * price
+        out_price += ((number - number_of_non_specials)/special[0]) * special[1]
+        return out_price
+
 
 
