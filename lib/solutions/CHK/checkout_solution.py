@@ -30,20 +30,23 @@ class CheckoutSolution:
         price = 0
         #TODO pretty sure I can streamline this significantly
         for key in sku_dict.keys():
-            if key is "A":
-                number = sku_dict.get(key)
-                number_of_non_specials = number % A_special[0]
-                price += number_of_non_specials * A_price
-                price += ((number - number_of_non_specials)/A_special[0]) * A_special[1]
-            if key is "B":
-                number = sku_dict.get(key)
-                number_of_non_specials = number % B_special[0]
-                price += number_of_non_specials * B_price
-                price += ((number - number_of_non_specials)/B_special[0]) * B_special[1]
-            if key is "C":
-                price += sku_dict.get(key) * C_price
-            if key is "D":
-                price += sku_dict.get(key) * D_price
-            else:
-                return -1
+            match key:
+                case "A":
+                    number = sku_dict.get(key)
+                    number_of_non_specials = number % A_special[0]
+                    price += number_of_non_specials * A_price
+                    price += ((number - number_of_non_specials)/A_special[0]) * A_special[1]
+                case "B":
+                    number = sku_dict.get(key)
+                    number_of_non_specials = number % B_special[0]
+                    price += number_of_non_specials * B_price
+                    price += ((number - number_of_non_specials)/B_special[0]) * B_special[1]
+                case "C":
+                    price += sku_dict.get(key) * C_price
+                case "D":
+                    price += sku_dict.get(key) * D_price
+                case _:
+                    return -1
+                
+        return price
 
