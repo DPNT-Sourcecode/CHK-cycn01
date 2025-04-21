@@ -61,13 +61,14 @@ class CheckoutSolution:
                     number_of_specials = ((number - number_of_non_specials)/E_special[0])
                     price += number * E_price
                     no_of_Bs = sku_dict.get("B")
-                    if no_of_Bs > 0:
+                    no_of_applications = max(no_of_Bs, number_of_specials)
 
 
                 case _:
                     return -1
                 
         return int(price)
+
 
 
 
