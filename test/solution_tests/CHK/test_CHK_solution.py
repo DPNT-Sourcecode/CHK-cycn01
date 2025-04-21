@@ -15,3 +15,4 @@ class TestHLO():
         assert tester.checkout("PPPPPP") == 250
         assert tester.checkout("QQQQRRRR") == 280
         assert tester.checkout("UUUU") == 120
+        assert tester.checkout("VVVVV") == 220

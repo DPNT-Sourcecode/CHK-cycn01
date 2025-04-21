@@ -59,7 +59,7 @@ class CheckoutSolution:
         P_special = [5, 200]
         Q_special = [3, 80]
         R_special = 3
-        U_special = [3, prices["U"] * 3]
+        U_special = [4, prices["U"] * 3]
         V_special = [2, 90]
         V_special_2 = [3, 130]
 
