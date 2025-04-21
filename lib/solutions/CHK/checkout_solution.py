@@ -22,12 +22,14 @@ class CheckoutSolution:
         C_price = 20
         D_price = 15
         E_price = 40
+        F_price = 10
 
         #set up specials
         A_special = [3, 130]
         A_special_2 = [5, 200]
         B_special = [2, 45]
         E_special = 2
+        F_special = [3, F_price * 2]
 
         #calculate the price
         price = 0
@@ -64,10 +66,11 @@ class CheckoutSolution:
                 case "E":
                     # E specials have been applied in B case.
                     price += sku_dict.get(key) * E_price
-
-
+                case "F":
+                    #buy 2F get 1F free, but only in 3s.
                 case _:
                     return -1
                 
         return int(price)
+
 
