@@ -66,6 +66,28 @@ class CheckoutSolution:
 
         #calculate the price
         price = 0
+
+        #Apply group discount first because we need to reduce the count of those from the dict
+        number_in_group = sku_dict["S"] + sku_dict["T"] + sku_dict["X"] + sku_dict["Y"] + sku_dict["Z"]
+        times_to_minus = number_in_group // 3
+        for _i in range(times_to_minus):
+            for _j in range(3):
+                # Go from most expensive first
+                if sku_dict["X"] is not None:
+                    val = sku_dict.get("X")
+                    sku_dict.update({"X": val-1})
+                elif sku_dict["Z"] is not None:
+                    val = sku_dict.get("Z")
+                    sku_dict.update({"Z": val-1})
+                elif sku_dict["S"] is not None:
+                    val = sku_dict.get("S")
+                    sku_dict.update({"S": val-1})
+                elif sku_dict["T"] is not None:
+                    val = sku_dict.get("T")
+                    sku_dict.update({"T": val-1})
+                elif sku_dict["Y"] is not None:
+                    val = sku_dict.get("Y")
+                    sku_dict.update({"Y": val-1})
         #TODO pretty sure I can streamline this significantly
         # Ok there's definitely a way to do this with object-oriented programming to make this 1 check...
         #For now I'm just gonna functionise the more complex applications
@@ -180,13 +202,14 @@ class CheckoutSolution:
         out_price += ((number - number_of_non_specials)/special[0]) * special[1]
         return out_price
     
-    def group_discount(self, items_in_group, group_size, group_price, price):
-        number_of_items = 0
-        for item in items_in_group:
-            number_of_items += item
-        number_of_non_discounts = number_of_items % group_size
-        out_price = number_of_non_discounts * price
-        number_of_group_discounts = number_of_items - number_of_non_discounts
-        out_price += number_of_group_discounts * group_price
-        return out_price, number_of_group_discounts
+    # def group_discount(self, items_in_group, group_size, group_price, number price, group_done):
+    #     number_of_items = 0
+    #     for item in items_in_group:
+    #         number_of_items += item
+    #     number_of_non_discounts = number_of_items % group_size
+    #     out_price = number_of_non_discounts * price
+    #     number_of_group_discounts = number_of_items - number_of_non_discounts
+    #     out_price += number_of_group_discounts * group_price
+    #     return out_price, number_of_group_discounts
+
 
