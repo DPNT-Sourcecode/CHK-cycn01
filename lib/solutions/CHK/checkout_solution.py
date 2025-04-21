@@ -17,19 +17,21 @@ class CheckoutSolution:
         print(sku_dict)
 
         #set up base prices
-        A_price = 50
-        B_price = 30
-        C_price = 20
-        D_price = 15
-        E_price = 40
-        F_price = 10
+        prices = {
+            "A": 50,
+            "B": 30,
+            "C": 20,
+            "D": 15,
+            "E": 40,
+            "F": 10
+        }
 
         #set up specials
         A_special = [3, 130]
         A_special_2 = [5, 200]
         B_special = [2, 45]
         E_special = 2
-        F_special = [3, F_price * 2]
+        F_special = [3, prices["F"] * 2]
 
         #calculate the price
         price = 0
@@ -43,14 +45,15 @@ class CheckoutSolution:
                     price += self.two_tier_discount(A_price, A_special, A_special_2, number)
                 case "B":
                     number = sku_dict.get(key)
-                    # Apply the E discount by taking away any Bs that are made free by the Es
-                    if sku_dict.get("E") is not None:
-                        no_of_Es = sku_dict.get("E")
-                        number = number - (no_of_Es // E_special)
-                    # Now we've gotten rid of the free Bs, we can continue as normal
-                    number_of_non_specials = number % B_special[0]
-                    price += number_of_non_specials * B_price
-                    price += ((number - number_of_non_specials)/B_special[0]) * B_special[1]
+                    price += self.get_free_by_other(B_price, B_special, E_special, number, sku_dict.get("E"))
+                    # # Apply the E discount by taking away any Bs that are made free by the Es
+                    # if sku_dict.get("E") is not None:
+                    #     no_of_Es = sku_dict.get("E")
+                    #     number = number - (no_of_Es // E_special)
+                    # # Now we've gotten rid of the free Bs, we can continue as normal
+                    # number_of_non_specials = number % B_special[0]
+                    # price += number_of_non_specials * B_price
+                    # price += ((number - number_of_non_specials)/B_special[0]) * B_special[1]
                 case "C":
                     price += sku_dict.get(key) * C_price
                 case "D":
@@ -93,6 +96,7 @@ class CheckoutSolution:
         out_price = number_of_non_specials * price
         out_price += ((number - number_of_non_specials)/special[0]) * special[1]
         return out_price
+
 
 
 
