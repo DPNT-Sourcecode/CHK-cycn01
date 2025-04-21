@@ -180,6 +180,13 @@ class CheckoutSolution:
         out_price += ((number - number_of_non_specials)/special[0]) * special[1]
         return out_price
     
-    def group_discount(self, items_in_group, price):
-        number_of_group_discounts = min(*items_in_group)
+    def group_discount(self, items_in_group, group_size, group_price, price):
+        number_of_items = 0
+        for item in items_in_group:
+            number_of_items += item
+        number_of_non_discounts = number_of_items % group_size
+        out_price = number_of_non_discounts * price
+        number_of_group_discounts = number_of_items - number_of_non_discounts
+        out_price += number_of_group_discounts * group_price
         return out_price, number_of_group_discounts
+
