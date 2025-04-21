@@ -49,5 +49,3 @@ class CheckoutSolution:
                     return -1
                 
         return int(price)
-
-
