@@ -14,7 +14,7 @@ class CheckoutSolution:
                 sku_dict.update({sku: val+1})
                 
         #check sku_dict is as expected
-        print(sku_dict)
+        #print(sku_dict)
 
         #set up specials
         A_special = [3, 130]
