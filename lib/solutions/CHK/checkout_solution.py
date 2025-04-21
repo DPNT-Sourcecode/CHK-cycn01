@@ -27,7 +27,7 @@ class CheckoutSolution:
         A_special = [3, 130]
         A_special_2 = [5, 200]
         B_special = [2, 45]
-        E_special = [2, -B_price]
+        E_special = 2
 
         #calculate the price
         price = 0
@@ -57,17 +57,19 @@ class CheckoutSolution:
                     price += sku_dict.get(key) * D_price
                 case "E":
                     number = sku_dict.get(key)
-                    number_of_non_specials = number % E_special[0]
-                    number_of_specials = ((number - number_of_non_specials)/E_special[0])
+                    number_of_non_specials = number % E_special
+                    number_of_specials = ((number - number_of_non_specials)/E_special)
                     price += number * E_price
                     no_of_Bs = sku_dict.get("B")
                     no_of_applications = max(no_of_Bs, number_of_specials)
+
 
 
                 case _:
                     return -1
                 
         return int(price)
+
 
 
 
