@@ -72,20 +72,22 @@ class CheckoutSolution:
         times_to_minus = number_in_group // 3
         for _i in range(times_to_minus):
             for _j in range(3):
+                print(sku_dict)
+                print(sku_dict.get("X"))
                 # Go from most expensive first
-                if sku_dict.get("X") is not None:
+                if sku_dict.get("X") is not None and sku_dict.get("X") != 0:
                     val = sku_dict.get("X")
                     sku_dict.update({"X": val-1})
-                elif sku_dict.get("Z") is not None:
+                elif sku_dict.get("Z") is not None and sku_dict.get("Z") != 0:
                     val = sku_dict.get("Z")
                     sku_dict.update({"Z": val-1})
-                elif sku_dict.get("S") is not None:
+                elif sku_dict.get("S") is not None and sku_dict.get("S") != 0:
                     val = sku_dict.get("S")
                     sku_dict.update({"S": val-1})
-                elif sku_dict.get("T") is not None:
+                elif sku_dict.get("T") is not None and sku_dict.get("T") != 0:
                     val = sku_dict.get("T")
                     sku_dict.update({"T": val-1})
-                elif sku_dict.get("Y") is not None:
+                elif sku_dict.get("Y") is not None and sku_dict.get("Y") != 0:
                     val = sku_dict.get("Y")
                     sku_dict.update({"Y": val-1})
         price += 45 * times_to_minus
@@ -212,6 +214,3 @@ class CheckoutSolution:
     #     number_of_group_discounts = number_of_items - number_of_non_discounts
     #     out_price += number_of_group_discounts * group_price
     #     return out_price, number_of_group_discounts
-
-
-
