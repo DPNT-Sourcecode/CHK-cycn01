@@ -179,5 +179,7 @@ class CheckoutSolution:
         out_price = number_of_non_specials * price
         out_price += ((number - number_of_non_specials)/special[0]) * special[1]
         return out_price
-
-
+    
+    def group_discount(self, items_in_group, price):
+        number_of_group_discounts = min(*items_in_group)
+        return out_price, number_of_group_discounts
