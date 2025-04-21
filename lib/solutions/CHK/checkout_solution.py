@@ -68,7 +68,7 @@ class CheckoutSolution:
         price = 0
 
         #Apply group discount first because we need to reduce the count of those from the dict
-        number_in_group = sku_dict.get("S") + sku_dict.get("T") + sku_dict.get("X") + sku_dict.get("Y") + sku_dict.get("Z")
+        number_in_group = sku_dict.get("S", 0) + sku_dict.get("T", 0) + sku_dict.get("X", 0) + sku_dict.get("Y", 0) + sku_dict.get("Z", 0)
         times_to_minus = number_in_group // 3
         for _i in range(times_to_minus):
             for _j in range(3):
