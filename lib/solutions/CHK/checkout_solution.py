@@ -48,5 +48,6 @@ class CheckoutSolution:
                 case _:
                     return -1
                 
-        return price
+        return int(price)
+
 
