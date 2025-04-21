@@ -14,7 +14,7 @@ class CheckoutSolution:
                 sku_dict.update({sku: val+1})
                 
         #check sku_dict is as expected
-        print(sku_dict)
+        #print(sku_dict)
 
         #set up base prices    
         prices = {
@@ -25,8 +25,9 @@ class CheckoutSolution:
             "E": 40, #2E get one B free
             "F": 10, #2F get one F free
             "G": 20,
-            "H": 35, #5H for 45, 10H for 80
-            "I": 60,
+            "H": 10, #5H for 45, 10H for 80
+            "I": 35,
+            "J": 60,
             "K": 80, #2K for 150    
             "L": 90,
             "M": 15,
@@ -158,7 +159,7 @@ class CheckoutSolution:
     def two_tier_discount(self, price, special1, special2, number):
         # mod the larger special to get remainder
         number_of_non_extra_specials = number % special2[0]
-        print(number_of_non_extra_specials)
+        #print(number_of_non_extra_specials)
         # mod smaller special to get remainder of remainder
         number_of_non_specials = number_of_non_extra_specials % special1[0]
         # add items that don't get a special
@@ -178,4 +179,5 @@ class CheckoutSolution:
         out_price = number_of_non_specials * price
         out_price += ((number - number_of_non_specials)/special[0]) * special[1]
         return out_price
+
 
