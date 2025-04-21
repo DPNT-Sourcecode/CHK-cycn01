@@ -73,21 +73,22 @@ class CheckoutSolution:
         for _i in range(times_to_minus):
             for _j in range(3):
                 # Go from most expensive first
-                if sku_dict["X"] is not None:
+                if sku_dict.get("X") is not None:
                     val = sku_dict.get("X")
                     sku_dict.update({"X": val-1})
-                elif sku_dict["Z"] is not None:
+                elif sku_dict.get("Z") is not None:
                     val = sku_dict.get("Z")
                     sku_dict.update({"Z": val-1})
-                elif sku_dict["S"] is not None:
+                elif sku_dict.get("S") is not None:
                     val = sku_dict.get("S")
                     sku_dict.update({"S": val-1})
-                elif sku_dict["T"] is not None:
+                elif sku_dict.get("T") is not None:
                     val = sku_dict.get("T")
                     sku_dict.update({"T": val-1})
-                elif sku_dict["Y"] is not None:
+                elif sku_dict.get("Y") is not None:
                     val = sku_dict.get("Y")
                     sku_dict.update({"Y": val-1})
+        price += 45 * times_to_minus
         #TODO pretty sure I can streamline this significantly
         # Ok there's definitely a way to do this with object-oriented programming to make this 1 check...
         #For now I'm just gonna functionise the more complex applications
