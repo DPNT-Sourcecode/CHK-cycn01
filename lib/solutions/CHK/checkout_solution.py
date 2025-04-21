@@ -58,12 +58,17 @@ class CheckoutSolution:
                 case "E":
                     number = sku_dict.get(key)
                     number_of_non_specials = number % E_special[0]
-                    price += number_of_non_specials * E_price
-                    if sku_dict.get("B")
+                    number_of_specials = ((number - number_of_non_specials)/E_special[0])
+                    price += number * E_price
+                    no_of_Bs = sku_dict.get("B")
+                    if no_of_Bs > 0:
+
+
                 case _:
                     return -1
                 
         return int(price)
+
 
 
 
