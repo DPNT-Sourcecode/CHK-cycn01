@@ -48,9 +48,13 @@ class CheckoutSolution:
                     price += ((number - number_of_non_specials)/A_special_2[0]) * A_special_2[1]
                 case "B":
                     number = sku_dict.get(key)
-                    number_of_non_specials = number % B_special[0]
+                    # Apply the E discount by taking away any Bs that are made free by the Es
+                    no_of_Es = sku_dict.get("E")
+                    post_E_number = number - (no_of_Es // E_special)
+                    # Now we've gotten rid of the free Bs, we can continue as normal
+                    number_of_non_specials = post_E_number % B_special[0]
                     price += number_of_non_specials * B_price
-                    price += ((number - number_of_non_specials)/B_special[0]) * B_special[1]
+                    price += ((post_E_number - number_of_non_specials)/B_special[0]) * B_special[1]
                 case "C":
                     price += sku_dict.get(key) * C_price
                 case "D":
