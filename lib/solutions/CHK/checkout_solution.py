@@ -14,7 +14,7 @@ class CheckoutSolution:
                 sku_dict.update({sku: val+1})
                 
         #check sku_dict is as expected
-        #print(sku_dict)
+        print(sku_dict)
 
         #set up base prices
         A_price = 50
@@ -46,7 +46,7 @@ class CheckoutSolution:
                     # add items that only get the smaller special
                     price += ((number_of_non_extra_specials - number_of_non_specials)/A_special[0]) * A_special[1]
                     # add items from the larger special
-                    price += ((number - number_of_non_specials)/A_special_2[0]) * A_special_2[1]
+                    price += ((number - number_of_non_extra_specials)/A_special_2[0]) * A_special_2[1]
                 case "B":
                     number = sku_dict.get(key)
                     # Apply the E discount by taking away any Bs that are made free by the Es
