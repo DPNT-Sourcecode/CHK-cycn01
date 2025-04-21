@@ -15,22 +15,6 @@ class CheckoutSolution:
                 
         #check sku_dict is as expected
         #print(sku_dict)
-| K    | 70    | 2K for 120                      |
-| L    | 90    |                                 |
-| M    | 15    |                                 |
-| N    | 40    | 3N get one M free               |
-| O    | 10    |                                 |
-| P    | 50    | 5P for 200                      |
-| Q    | 30    | 3Q for 80                       |
-| R    | 50    | 3R get one Q free               |
-| S    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
-| T    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
-| U    | 40    | 3U get one U free               |
-| V    | 50    | 2V for 90, 3V for 130           |
-| W    | 20    |                                 |
-| X    | 17    | buy any 3 of (S,T,X,Y,Z) for 45 |
-| Y    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
-| Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |
 
         #set up base prices    
         prices = {
@@ -44,7 +28,7 @@ class CheckoutSolution:
             "H": 10, #5H for 45, 10H for 80
             "I": 35,
             "J": 60,
-            "K": 70, #2K for 150    
+            "K": 70, #2K for 120    
             "L": 90,
             "M": 15,
             "N": 40, #3N get one M free
@@ -52,14 +36,14 @@ class CheckoutSolution:
             "P": 50, #5P for 200
             "Q": 30, #3Q for 80
             "R": 50, #3R get one Q free
-            "S": 30,
+            "S": 20,
             "T": 20,
             "U": 40, #3U get one U free
             "V": 50, #2V for 90, 3V for 130
             "W": 20,
-            "X": 90,
-            "Y": 10,
-            "Z": 50
+            "X": 17,
+            "Y": 20,
+            "Z": 21
         }
 
         #set up specials
@@ -88,13 +72,10 @@ class CheckoutSolution:
         times_to_minus = number_in_group // 3
         for _i in range(times_to_minus):
             for _j in range(3):
-                print(sku_dict)
-                print(sku_dict.get("X"))
+                #print(sku_dict)
+                #print(sku_dict.get("X"))
                 # Go from most expensive first
-                if sku_dict.get("X") is not None and sku_dict.get("X") != 0:
-                    val = sku_dict.get("X")
-                    sku_dict.update({"X": val-1})
-                elif sku_dict.get("Z") is not None and sku_dict.get("Z") != 0:
+                if sku_dict.get("Z") is not None and sku_dict.get("Z") != 0:
                     val = sku_dict.get("Z")
                     sku_dict.update({"Z": val-1})
                 elif sku_dict.get("S") is not None and sku_dict.get("S") != 0:
@@ -106,6 +87,9 @@ class CheckoutSolution:
                 elif sku_dict.get("Y") is not None and sku_dict.get("Y") != 0:
                     val = sku_dict.get("Y")
                     sku_dict.update({"Y": val-1})
+                elif sku_dict.get("X") is not None and sku_dict.get("X") != 0:
+                    val = sku_dict.get("X")
+                    sku_dict.update({"X": val-1})
         price += 45 * times_to_minus
         #TODO pretty sure I can streamline this significantly
         # Ok there's definitely a way to do this with object-oriented programming to make this 1 check...
