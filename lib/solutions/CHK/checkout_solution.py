@@ -118,18 +118,24 @@ class CheckoutSolution:
                     price += self.basic_special(prices[key], P_special, number)
                 case "Q":
                     #3Q for 80
+                    #3R get one Q free
                     number = sku_dict.get(key)
-                    price += self.basic_special(prices[key], Q_special, number)
+                    price += self.get_free_by_other(prices[key], Q_special, R_special, number, sku_dict.get("R"))
                 case "R":
+                    #Handled by Q
                     price += sku_dict.get(key) * prices[key]
                 case "S":
                     price += sku_dict.get(key) * prices[key]
                 case "T":
                     price += sku_dict.get(key) * prices[key]
                 case "U":
-                    price += sku_dict.get(key) * prices[key]
+                    #3U get one U free
+                    number = sku_dict.get(key)
+                    price += self.basic_special(prices[key], U_special, number)
                 case "V":
-                    price += sku_dict.get(key) * prices[key]
+                    #2V for 90, 3V for 130
+                    number = sku_dict.get(key)
+                    price += self.two_tier_discount(prices[key], V_special, V_special_2, number)
                 case "W":
                     price += sku_dict.get(key) * prices[key]
                 case "X":
