@@ -56,19 +56,15 @@ class CheckoutSolution:
                 case "D":
                     price += sku_dict.get(key) * D_price
                 case "E":
-                    number = sku_dict.get(key)
-                    number_of_non_specials = number % E_special
-                    number_of_specials = ((number - number_of_non_specials)/E_special)
-                    price += number * E_price
-                    no_of_Bs = sku_dict.get("B")
-                    no_of_applications = max(no_of_Bs, number_of_specials)
-
+                    # E specials have been applied in B case.
+                    price += sku_dict.get(key) * E_price
 
 
                 case _:
                     return -1
                 
         return int(price)
+
 
 
 
