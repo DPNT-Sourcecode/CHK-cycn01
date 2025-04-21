@@ -38,6 +38,7 @@ class CheckoutSolution:
                     number = sku_dict.get(key)
                     # mod the larger special to get remainder
                     number_of_non_extra_specials = number % A_special_2[0]
+                    print(number_of_non_extra_specials)
                     # mod smaller special to get remainder of remainder
                     number_of_non_specials = number_of_non_extra_specials % A_special[0]
                     # add items that don't get a special
@@ -69,3 +70,4 @@ class CheckoutSolution:
                     return -1
                 
         return int(price)
+
