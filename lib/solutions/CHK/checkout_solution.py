@@ -18,6 +18,7 @@ class CheckoutSolution:
 
         #set up specials
         A_special = [3, 130]
+        A_special_2 = [5, 200]
         B_special = [2, 45]
 
         #set up base prices
@@ -33,9 +34,11 @@ class CheckoutSolution:
             match key:
                 case "A":
                     number = sku_dict.get(key)
-                    number_of_non_specials = number % A_special[0]
+                    number_of_non_extra_specials = number % A_special_2[0]
+                    number_of_non_specials = number_of_non_extra_specials % A_special[0]
                     price += number_of_non_specials * A_price
-                    price += ((number - number_of_non_specials)/A_special[0]) * A_special[1]
+                    price += ((number_of_non_extra_specials - number_of_non_specials)/A_special[0]) * A_special[1]
+                    price += ((number - number_of_non_specials)/A_special_2[0]) * A_special_2[1]
                 case "B":
                     number = sku_dict.get(key)
                     number_of_non_specials = number % B_special[0]
@@ -49,3 +52,4 @@ class CheckoutSolution:
                     return -1
                 
         return int(price)
+
