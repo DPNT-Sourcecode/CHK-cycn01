@@ -34,6 +34,8 @@ class CheckoutSolution:
         #calculate the price
         price = 0
         #TODO pretty sure I can streamline this significantly
+        # Ok there's definitely a way to do this with object-oriented programming to make this 1 check...
+        #For now I'm just gonna functionise the more complex applications
         for key in sku_dict.keys():
             match key:
                 case "A":
@@ -77,3 +79,18 @@ class CheckoutSolution:
                     return -1
                 
         return int(price)
+    
+    def two_tier_discount(self, price, special1, special2, number):
+        # mod the larger special to get remainder
+        number_of_non_extra_specials = number % special2[0]
+        print(number_of_non_extra_specials)
+        # mod smaller special to get remainder of remainder
+        number_of_non_specials = number_of_non_extra_specials % special1[0]
+        # add items that don't get a special
+        out_price = number_of_non_specials * price
+        # add items that only get the smaller special
+        out_price += ((number_of_non_extra_specials - number_of_non_specials)/special1[0]) * special1[1]
+        # add items from the larger special
+        out_price += ((number - number_of_non_extra_specials)/special2[0]) * special2[1]
+        return out_price
+
