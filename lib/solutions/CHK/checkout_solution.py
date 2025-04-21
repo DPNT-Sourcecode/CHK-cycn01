@@ -16,18 +16,18 @@ class CheckoutSolution:
         #check sku_dict is as expected
         #print(sku_dict)
 
-        #set up specials
-        A_special = [3, 130]
-        A_special_2 = [5, 200]
-        B_special = [2, 45]
-        E_special = [2, -B_special[1]]
-
         #set up base prices
         A_price = 50
         B_price = 30
         C_price = 20
         D_price = 15
         E_price = 40
+
+        #set up specials
+        A_special = [3, 130]
+        A_special_2 = [5, 200]
+        B_special = [2, 45]
+        E_special = [2, -B_price]
 
         #calculate the price
         price = 0
@@ -59,9 +59,11 @@ class CheckoutSolution:
                     number = sku_dict.get(key)
                     number_of_non_specials = number % E_special[0]
                     price += number_of_non_specials * E_price
+                    if sku_dict.get("B")
                 case _:
                     return -1
                 
         return int(price)
+
 
 
