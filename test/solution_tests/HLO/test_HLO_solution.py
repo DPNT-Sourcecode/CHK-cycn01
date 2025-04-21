@@ -3,4 +3,4 @@ from lib.solutions.HLO.hello_solution import HelloSolution
 
 class TestHLO():
     def test_hlo(self):
-        assert HelloSolution.hello("friend") == "hello, friend"
+        assert HelloSolution.hello(self, friend_name="friend") == "hello, friend"
