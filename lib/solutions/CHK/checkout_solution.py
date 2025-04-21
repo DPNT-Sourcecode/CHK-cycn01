@@ -54,6 +54,7 @@ class CheckoutSolution:
         H_special = [5, 45]
         H_special_2 = [10, 80]
         K_special = [2, 150]
+        M_special = [1, prices["M"]]
         N_special = 3
         P_special = [5, 200]
         Q_special = [3, 80]
@@ -104,15 +105,21 @@ class CheckoutSolution:
                 case "L":
                     price += sku_dict.get(key) * prices[key]
                 case "M":
-                    price += sku_dict.get(key) * prices[key]
+                    #3N get one M free
+                    number = sku_dict.get(key)
+                    price += self.get_free_by_other(prices[key], M_special, N_special, number, sku_dict.get("N"))
                 case "N":
                     price += sku_dict.get(key) * prices[key]
                 case "O":
                     price += sku_dict.get(key) * prices[key]
                 case "P":
-                    price += sku_dict.get(key) * prices[key]
+                    #5P for 200
+                    number = sku_dict.get(key)
+                    price += self.basic_special(prices[key], P_special, number)
                 case "Q":
-                    price += sku_dict.get(key) * prices[key]
+                    #3Q for 80
+                    number = sku_dict.get(key)
+                    price += self.basic_special(prices[key], Q_special, number)
                 case "R":
                     price += sku_dict.get(key) * prices[key]
                 case "S":
@@ -165,3 +172,4 @@ class CheckoutSolution:
         out_price = number_of_non_specials * price
         out_price += ((number - number_of_non_specials)/special[0]) * special[1]
         return out_price
+
