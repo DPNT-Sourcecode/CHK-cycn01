@@ -41,17 +41,6 @@ class CheckoutSolution:
                 case "A":
                     number = sku_dict.get(key)
                     price += self.two_tier_discount(A_price, A_special, A_special_2, number)
-                    # # mod the larger special to get remainder
-                    # number_of_non_extra_specials = number % A_special_2[0]
-                    # print(number_of_non_extra_specials)
-                    # # mod smaller special to get remainder of remainder
-                    # number_of_non_specials = number_of_non_extra_specials % A_special[0]
-                    # # add items that don't get a special
-                    # price += number_of_non_specials * A_price
-                    # # add items that only get the smaller special
-                    # price += ((number_of_non_extra_specials - number_of_non_specials)/A_special[0]) * A_special[1]
-                    # # add items from the larger special
-                    # price += ((number - number_of_non_extra_specials)/A_special_2[0]) * A_special_2[1]
                 case "B":
                     number = sku_dict.get(key)
                     # Apply the E discount by taking away any Bs that are made free by the Es
