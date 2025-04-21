@@ -68,6 +68,11 @@ class CheckoutSolution:
                     price += sku_dict.get(key) * E_price
                 case "F":
                     #buy 2F get 1F free, but only in 3s.
+                    # This is basically the same as the basic B case, because 3Fs = a new price, and any remainders are added as normal.
+                    number = sku_dict.get(key)
+                    number_of_non_specials = number % F_special[0]
+                    price += number_of_non_specials * F_price
+                    price += ((number - number_of_non_specials)/F_special[0]) * F_special[1]
                 case _:
                     return -1
                 
